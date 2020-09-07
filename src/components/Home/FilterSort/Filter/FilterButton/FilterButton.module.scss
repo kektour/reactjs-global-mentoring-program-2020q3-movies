@@ -1,0 +1,29 @@
+@import 'src/shared.scss';
+
+.root {
+  margin-right: 30px;
+  position: relative;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.button {
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+
+.buttonActive {
+  color: #f65261;
+}
+
+
+.line {
+  @extend %line;
+  position: absolute;
+  top: 40px;
+  height: 2px;
+  background-color: #f65261;
+}

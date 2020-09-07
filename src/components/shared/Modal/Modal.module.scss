@@ -1,0 +1,31 @@
+@import 'src/shared.scss';
+
+.coreModalRoot {
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: inset 120px 100px 250px #000000, inset -120px -100px 250px #000000;
+}
+
+.rootOpen {
+  filter: blur(10px);
+}
+
+.root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  @extend %container;
+  flex: 1 0 auto;
+  margin-bottom: 125px;
+}
+
+.header {
+  padding-top: 20px;
+  margin-bottom: 80px;
+}
+
+.footerRoot {
+  flex-shrink: 0;
+}

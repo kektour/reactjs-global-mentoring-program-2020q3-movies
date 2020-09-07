@@ -1,0 +1,30 @@
+@import 'src/shared.scss';
+
+.root {
+  background-color: #232323;
+}
+
+.container {
+  @extend %container;
+}
+
+.filterSort {
+  margin-bottom: 28px;
+}
+
+.moviesCount {
+  color: #fff;
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 30px;
+
+  & > span {
+    font-weight: bold;
+  }
+}
+
+.moviesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

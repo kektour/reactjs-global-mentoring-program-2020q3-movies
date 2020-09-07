@@ -1,0 +1,51 @@
+.root {
+  position: relative;
+  width: 325px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+
+  &:hover {
+    cursor: pointer;
+
+    .movieActionModalRoundButtonRoot {
+      visibility: visible;
+    }
+  }
+}
+
+.img {
+  height: 455px;
+  margin-bottom: 20px;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: #555555;
+  font-size: 20px;
+}
+
+.year {
+  color: #555555;
+  border: 1px solid #555555;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+.genre {
+  color: #555555;
+  font-size: 20px;
+}
+
+.movieActionModalRoundButtonRoot {
+  visibility: hidden;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}

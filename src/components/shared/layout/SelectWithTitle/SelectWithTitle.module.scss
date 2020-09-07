@@ -1,0 +1,31 @@
+.root {
+}
+
+.title {
+  text-transform: uppercase;
+  color: #f65261;
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.selectRoot {
+  height: 60px;
+  border: none;
+  padding: 20px;
+  font-size: 18px;
+  background-color: #555555;
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+
+  &:focus {
+    border: 1px solid #424242;
+    outline: none;
+  }
+}
+
+.selectOption {
+  color: #fff;
+}
