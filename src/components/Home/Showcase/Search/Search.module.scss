@@ -1,3 +1,5 @@
+@import 'src/shared.scss';
+
 .root {
   display: flex;
 }
@@ -19,6 +21,7 @@
   }
 }
 
-.buttonRoot {
+.button {
+  @extend %button;
   width: 230px;
 }

@@ -3,17 +3,17 @@
 .root {
   display: flex;
   flex-direction: column;
-  // min-height: 100vh;
+  min-height: 100vh;
 }
 
 .content {
   flex: 1 0 auto;
 }
 
-.footer {
-  flex-shrink: 0;
-}
-
 .line {
   @extend %line;
+}
+
+.footer {
+  flex-shrink: 0;
 }

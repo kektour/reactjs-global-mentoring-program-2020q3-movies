@@ -10,20 +10,30 @@
 }
 
 .button {
+  background: transparent;
+  border: none;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
+  font-size: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .buttonActive {
   color: #f65261;
 }
 
-
 .line {
   @extend %line;
   position: absolute;
-  top: 40px;
+  top: 42px;
   height: 2px;
   background-color: #f65261;
 }

@@ -1,0 +1,13 @@
+.root {
+  margin: 0;
+  color: #f65261;
+  font-size: 24px;
+
+  & > span {
+    font-weight: bold;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

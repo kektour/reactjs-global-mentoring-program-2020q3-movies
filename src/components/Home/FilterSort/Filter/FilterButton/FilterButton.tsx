@@ -1,31 +1,29 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
+import { Item } from '../Filter';
 import styles from './FilterButton.module.scss';
 
 type Props = {
-  selected: boolean;
-  onClick: () => void;
+  item: Item;
+  isSelected: boolean;
+  onClick: (id: string) => void;
 };
 
 export const FilterButton: React.FC<Props> = (props) => {
-  const { children, selected, onClick: handleClick } = props;
-  const handleHrefClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    handleClick();
-  }, [handleClick]);
+  const { item, isSelected, onClick } = props;
+  const handleClick = useCallback(() => onClick(item.id), [item, onClick]);
   return (
     <div className={styles.root}>
-      <a
-        href="/"
+      <button
         className={classnames({
           [styles.button]: true,
-          [styles.buttonActive]: selected,
+          [styles.buttonActive]: isSelected,
         })}
-        onClick={handleHrefClick}
+        onClick={handleClick}
       >
-        {children}
-      </a>
-      {selected && <div className={styles.line}></div>}
+        {item.name}
+      </button>
+      {isSelected && <div className={styles.line}></div>}
     </div>
   );
 };
