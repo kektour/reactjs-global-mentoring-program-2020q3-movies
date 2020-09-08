@@ -1,35 +1,30 @@
 import React, { useState, useCallback } from 'react';
-import { Footer } from '../shared/layout/Footer';
+import { Footer } from '../shared/Footer';
 import { FilterSort } from './FilterSort';
 import { MoviesList } from './MoviesList';
 import { Showcase } from './Showcase';
-import { AddMovieModal } from './AddMovieModal';
+import { MovieDetails } from './MovieDetails';
 import styles from './Home.module.scss';
+import { Movie } from '../../models/movie';
 
 type Props = {};
 
 export const Home: React.FC<Props> = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const handleCloseModal = useCallback(() => {
-    setModalOpen(false);
-  }, []);
-  const handleOpenModal = useCallback(() => {
-    setModalOpen(true);
-  }, []);
+  const [selectedMovie, setSelectedMovie] = useState<Movie>();
+  const handleSelectMovie = useCallback((m: Movie) => setSelectedMovie(m), []);
+  const handleResetMovie = useCallback(() => setSelectedMovie(undefined), []);
+
   return (
-    <React.Fragment>
-      <AddMovieModal open={modalOpen} onClose={handleCloseModal} />
-      <div className={styles.root}>
-        <div className={styles.content}>
-          <Showcase onModalOpen={handleOpenModal} />
-          <div className={styles.line}></div>
-          <FilterSort />
-          <MoviesList />
-        </div>
-        <div className={styles.footer}>
-          <Footer />
-        </div>
+    <div className={styles.root}>
+      <div className={styles.content}>
+        {selectedMovie ? <MovieDetails movie={selectedMovie} onCloseClick={handleResetMovie}/> : <Showcase />}
+        <div className={styles.line}></div>
+        <FilterSort />
+        <MoviesList onSelectMovie={handleSelectMovie} />
       </div>
-    </React.Fragment>
+      <div className={styles.footer}>
+        <Footer />
+      </div>
+    </div>
   );
 };

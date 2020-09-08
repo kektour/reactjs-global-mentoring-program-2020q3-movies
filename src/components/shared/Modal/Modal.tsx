@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { Footer } from '../layout/Footer';
-import { Header } from '../layout/Header';
-import { Modal as CoreModal } from '../layout/Modal';
+import ReactDOM from 'react-dom';
+import { Footer } from '../Footer';
+import { Header } from '../Header';
 import styles from './Modal.module.scss';
 
 type Props = {
@@ -11,26 +11,35 @@ type Props = {
 
 export const Modal: React.FC<Props> = (props) => {
   const { open, children } = props;
-  const root = useMemo(() => document.querySelector('#root') as HTMLDivElement, []);
+  const body = document.querySelector('body') as HTMLBodyElement;
+  const root = document.querySelector('#root') as HTMLDivElement;
   useMemo(() => {
     if (open) {
+      body.classList.add(styles.bodyOpen);
       root.classList.add(styles.rootOpen);
     } else {
+      body.classList.remove(styles.bodyOpen);
       root.classList.remove(styles.rootOpen);
     }
-  }, [open]);
+  }, [open, body, root]);
 
   return (
-    <CoreModal open={open} classes={{ root: styles.coreModalRoot }}>
-      <div className={styles.root}>
-        <div className={styles.container}>
-          <div className={styles.header}>
-            <Header />
-          </div>
-          {children}
-        </div>
-        <Footer classes={{ root: styles.footerRoot }} />
-      </div>
-    </CoreModal>
+    (open && (
+      <React.Fragment>
+        {ReactDOM.createPortal(
+          <div className={styles.root}>
+            <div className={styles.container}>
+              <div className={styles.header}>
+                <Header />
+              </div>
+              {children}
+            </div>
+            <Footer classes={{ root: styles.footerRoot }} />
+          </div>,
+          body
+        )}
+      </React.Fragment>
+    )) ||
+    null
   );
 };
