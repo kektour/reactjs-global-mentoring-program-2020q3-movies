@@ -18,13 +18,15 @@ export const MovieCard: React.FC<Props> = (props) => {
   const handleRootDivClick = useCallback(() => handleSelectMovie(movie), [movie, handleSelectMovie]);
 
   return (
-    <div className={styles.root} onClick={handleRootDivClick}>
-      <img className={styles.img} src={movie.img} alt="Not Found" />
-      <div className={styles.contentContainer}>
-        <div className={styles.title}>{movie.title}</div>
-        <div className={styles.year}>{movie.releaseDate}</div>
+    <div className={styles.root}>
+      <div className={styles.movieContent} onClick={handleRootDivClick}>
+        <img className={styles.img} src={movie.img} alt="Not Found" />
+        <div className={styles.contentContainer}>
+          <div className={styles.title}>{movie.title}</div>
+          <div className={styles.year}>{movie.releaseDate}</div>
+        </div>
+        <div className={styles.genre}>{movie.genre}</div>
       </div>
-      <div className={styles.genre}>{movie.genre}</div>
       <MovieActionModal
         classes={{
           roundButtonRoot: styles.movieActionModalRoundButtonRoot,
