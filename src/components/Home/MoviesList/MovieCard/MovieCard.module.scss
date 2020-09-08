@@ -1,8 +1,5 @@
 .root {
   position: relative;
-  width: 325px;
-  display: flex;
-  flex-direction: column;
   margin-bottom: 50px;
 
   &:hover {
@@ -12,6 +9,12 @@
       visibility: visible;
     }
   }
+}
+
+.movieContent {
+  width: 325px;
+  display: flex;
+  flex-direction: column;
 }
 
 .img {
