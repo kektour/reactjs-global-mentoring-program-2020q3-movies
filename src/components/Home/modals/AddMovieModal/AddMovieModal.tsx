@@ -1,26 +1,41 @@
-import React, { useState } from 'react';
-import { Modal } from '../../../shared/Modal';
-import { Input, InputType } from '../../../shared/Input';
 import classnames from 'classnames';
-import styles from './AddMovieModal.module.scss';
+import React, { useCallback, useState } from 'react';
+import { NewMovie } from '../../../../models/movie';
+import { Input, InputType } from '../../../shared/Input';
+import { Modal } from '../../../shared/Modal';
 import { SelectWithTitle } from '../../../shared/select';
+import styles from './AddMovieModal.module.scss';
+import { useAddMovieModal } from './useAddMovieModal';
 
 type Props = {
   open: boolean;
   onClose: () => void;
 };
 
+const defaultMovie: NewMovie = {
+  title: '',
+  tagline: 'tagline',
+  vote_average: 0,
+  vote_count: 0,
+  release_date: new Date().toISOString().split('T')[0],
+  poster_path: 'https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg',
+  overview: '',
+  budget: 0,
+  revenue: 0,
+  genres: [],
+  runtime: 0,
+};
+
 export const AddMovieModal: React.FC<Props> = (props) => {
   const { open, onClose: handleClose } = props;
-  const [cloneMovie, setCloneMovie] = useState({
-    img: '',
-    title: '',
-    genre: '',
-    releaseDate: new Date().toISOString().split('T')[0],
-    url: '',
-    overview: '',
-    runtime: '',
-  });
+  const [newMovie, setNewMovie] = useState<NewMovie>({ ...defaultMovie });
+  const { createMovie } = useAddMovieModal();
+
+  const resetCloneMovie = useCallback(() => setNewMovie({ ...defaultMovie }), []);
+  const saveCreatedMovie = useCallback(() => {
+    createMovie(newMovie);
+    handleClose();
+  }, [newMovie, createMovie, handleClose]);
 
   return (
     <Modal open={open}>
@@ -31,11 +46,11 @@ export const AddMovieModal: React.FC<Props> = (props) => {
           <Input
             classes={{ root: styles.inputRoot }}
             title="Title"
-            value={cloneMovie.title}
+            value={newMovie.title}
             placeholder="Title here"
             onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
+              setNewMovie({
+                ...newMovie,
                 title: e.target.value,
               })
             }
@@ -44,12 +59,12 @@ export const AddMovieModal: React.FC<Props> = (props) => {
             classes={{ root: styles.inputRoot }}
             type={InputType.Date}
             title="Release Date"
-            value={cloneMovie.releaseDate}
+            value={newMovie.release_date}
             placeholder="Release Date here"
             onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
-                releaseDate: e.target.value,
+              setNewMovie({
+                ...newMovie,
+                release_date: e.target.value,
               })
             }
           />
@@ -57,39 +72,28 @@ export const AddMovieModal: React.FC<Props> = (props) => {
             classes={{ root: styles.inputRoot }}
             title="Movie Preview"
             placeholder="Movie Preview here"
-            value={cloneMovie.img}
+            value={newMovie.poster_path}
             onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
-                url: e.target.value,
-              })
-            }
-          />
-          <Input
-            classes={{ root: styles.inputRoot }}
-            title="Movie URL"
-            placeholder="Movie URL here"
-            value={cloneMovie.url}
-            onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
-                url: e.target.value,
+              setNewMovie({
+                ...newMovie,
+                poster_path: e.target.value,
               })
             }
           />
           <SelectWithTitle
             classes={{ root: styles.inputRoot }}
             title="Gende"
-            value={cloneMovie.genre}
+            value={newMovie.genres}
+            multiple
             options={[
               { value: 'foo', label: 'Foo' },
               { value: 'bar', label: 'Bar' },
               { value: 'baz', label: 'Baz' },
             ]}
             onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
-                genre: e.target.value,
+              setNewMovie({
+                ...newMovie,
+                genres: Array.from(e.target.selectedOptions).map((o) => o.value),
               })
             }
           />
@@ -97,10 +101,10 @@ export const AddMovieModal: React.FC<Props> = (props) => {
             classes={{ root: styles.inputRoot }}
             title="Overview"
             placeholder="Overview here"
-            value={cloneMovie.overview}
+            value={newMovie.overview}
             onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
+              setNewMovie({
+                ...newMovie,
                 overview: e.target.value,
               })
             }
@@ -109,17 +113,21 @@ export const AddMovieModal: React.FC<Props> = (props) => {
             classes={{ root: classnames(styles.inputRoot, styles.lastInputRoot) }}
             title="Runtime"
             placeholder="Runtime here"
-            value={cloneMovie.runtime}
+            value={newMovie.runtime + ''}
             onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
-                runtime: e.target.value,
+              setNewMovie({
+                ...newMovie,
+                runtime: Number(e.target.value),
               })
             }
           />
           <div className={styles.buttonsContainer}>
-            <button className={styles.buttonReset}>Reset</button>
-            <button className={styles.buttonSave}>Save</button>
+            <button className={styles.buttonReset} onClick={resetCloneMovie}>
+              Reset
+            </button>
+            <button className={styles.buttonSave} onClick={saveCreatedMovie}>
+              Save
+            </button>
           </div>
         </div>
       </div>
