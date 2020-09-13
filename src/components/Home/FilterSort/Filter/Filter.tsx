@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { FilterButton } from './FilterButton';
 import styles from './Filter.module.scss';
+import { useFilter } from './useFilter';
 
 export interface Item {
   id: string;
@@ -34,7 +35,11 @@ const items: Array<Item> = [
 
 export const Filter: React.FC<Props> = () => {
   const [item, setItem] = useState(items[0].id);
-  const handleFilterButtonClick = useCallback((id: string) => setItem(id), []);
+  const filter = useFilter();
+  const handleFilterButtonClick = useCallback((id: string) => {
+    setItem(id);
+    filter.filterMovies(id);
+  }, [filter]);
 
   return (
     <div className={styles.root}>

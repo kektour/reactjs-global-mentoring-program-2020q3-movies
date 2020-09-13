@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
 import classnames from 'classnames';
-import { Input, InputType } from '../../../shared/Input';
-import { SelectWithTitle } from '../../../shared/select';
-import { Modal } from '../../../shared/Modal';
+import React, { useCallback, useState } from 'react';
 import { Movie } from '../../../../models/movie';
-import styles from './EditMovieModal.module.scss';
+import { Input, InputType } from '../../../shared/Input';
+import { Modal } from '../../../shared/Modal';
+import { SelectWithTitle } from '../../../shared/select';
+import styles from './UpdateMovieModal.module.scss';
+import { useUpdateMovieModal } from './useUpdateMovieModal';
 
 type Props = {
   open: boolean;
@@ -12,9 +13,16 @@ type Props = {
   onClose: () => void;
 };
 
-export const EditMovieModal: React.FC<Props> = (props) => {
+export const UpdateMovieModal: React.FC<Props> = (props) => {
   const { open, movie, onClose: handleClose } = props;
-  const [cloneMovie, setCloneMovie] = useState(movie);
+  const [cloneMovie, setCloneMovie] = useState<Movie>({ ...movie });
+  const { updateMovie } = useUpdateMovieModal();
+
+  const resetCloneMovie = useCallback(() => setCloneMovie({ ...movie }), [movie]);
+  const saveCloneMovie = useCallback(() => {
+    updateMovie(cloneMovie);
+    handleClose();
+  }, [cloneMovie, updateMovie, handleClose]);
 
   return (
     <Modal open={open}>
@@ -26,11 +34,11 @@ export const EditMovieModal: React.FC<Props> = (props) => {
             classes={{ root: styles.inputRoot }}
             title="Movie Id"
             readOnly
-            value={cloneMovie.id}
+            value={cloneMovie.id + ''}
             onChange={(e) =>
               setCloneMovie({
                 ...cloneMovie,
-                id: e.target.value,
+                id: Number(e.target.value),
               })
             }
           />
@@ -49,40 +57,30 @@ export const EditMovieModal: React.FC<Props> = (props) => {
             classes={{ root: styles.inputRoot }}
             type={InputType.Date}
             title="Release Date"
-            value={cloneMovie.releaseDate}
+            value={cloneMovie.release_date}
             onChange={(e) =>
               setCloneMovie({
                 ...cloneMovie,
-                releaseDate: e.target.value,
+                release_date: e.target.value,
               })
             }
           />
           <Input
             classes={{ root: styles.inputRoot }}
             title="Movie Preview"
-            value={cloneMovie.img}
+            value={cloneMovie.poster_path}
             onChange={(e) =>
               setCloneMovie({
                 ...cloneMovie,
-                url: e.target.value,
-              })
-            }
-          />
-          <Input
-            classes={{ root: styles.inputRoot }}
-            title="Movie URL"
-            value={cloneMovie.url}
-            onChange={(e) =>
-              setCloneMovie({
-                ...cloneMovie,
-                url: e.target.value,
+                poster_path: e.target.value,
               })
             }
           />
           <SelectWithTitle
-            classes={{ root: styles.inputRoot }}
+            classes={{ root: styles.inputRoot, selectRoot: styles.selectInput }}
             title="Gende"
-            value={cloneMovie.genre}
+            value={cloneMovie.genres}
+            multiple
             options={[
               { value: 'foo', label: 'Foo' },
               { value: 'bar', label: 'Bar' },
@@ -91,7 +89,7 @@ export const EditMovieModal: React.FC<Props> = (props) => {
             onChange={(e) =>
               setCloneMovie({
                 ...cloneMovie,
-                genre: e.target.value,
+                genres: Array.from(e.target.selectedOptions).map((o) => o.value),
               })
             }
           />
@@ -119,8 +117,12 @@ export const EditMovieModal: React.FC<Props> = (props) => {
             }
           />
           <div className={styles.buttonsContainer}>
-            <button className={styles.buttonReset}>Reset</button>
-            <button className={styles.buttonSave}>Save</button>
+            <button className={styles.buttonReset} onClick={resetCloneMovie}>
+              Reset
+            </button>
+            <button className={styles.buttonSave} onClick={saveCloneMovie}>
+              Save
+            </button>
           </div>
         </div>
       </div>

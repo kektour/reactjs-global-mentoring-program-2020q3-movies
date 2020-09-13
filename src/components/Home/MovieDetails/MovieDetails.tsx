@@ -12,13 +12,14 @@ const isBetween = (x: number, min: number, max: number) => x >= min && x <= max;
 
 export const MovieDetails: React.FC<Props> = (props) => {
   const { movie, onCloseClick: handleCloseClick } = props;
-  const movieYear = useMemo(() => movie.releaseDate.substring(0, 4), [movie]);
+  const movieYear = useMemo(() => movie.release_date.substring(0, 4), [movie]);
   const ratingColor = useMemo(() => {
+    // TODO: upgrade to 10
     const piece = 5 / 3;
-    if (isBetween(movie.rating, 0, piece)) {
+    if (isBetween(movie.vote_average, 0, piece)) {
       return 'red';
     }
-    if (isBetween(movie.rating, piece, piece * 2)) {
+    if (isBetween(movie.vote_average, piece, piece * 2)) {
       return 'yellow';
     }
     return 'green';
@@ -36,15 +37,15 @@ export const MovieDetails: React.FC<Props> = (props) => {
           </Header>
         </div>
         <div className={styles.body}>
-          <img className={styles.image} src={movie.img} alt="Not Found" />
+          <img className={styles.image} src={movie.poster_path} alt="Not Found" />
           <div className={styles.info}>
             <div className={styles.titleNRating}>
               <h1 className={styles.title}>{movie.title}</h1>
               <div className={styles.rating} style={{ color: ratingColor }}>
-                {movie.rating}
+                {movie.vote_average}
               </div>
             </div>
-            {!!movie.note && <div className={styles.note}>{movie.note}</div>}
+            {!!movie.tagline && <div className={styles.note}>{movie.tagline}</div>}
             <div className={styles.releaseDateNRuntime}>
               <div className={styles.releaseDate}>{movieYear}</div>
               {movie.runtime} min
