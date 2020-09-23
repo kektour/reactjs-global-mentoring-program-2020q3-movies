@@ -6,26 +6,24 @@ import styles from './SelectWithTitle.module.scss';
 type Props = {
   classes?: {
     root?: string;
-    selectRoot?: string;
+    select?: {
+      root?: string;
+    };
   };
   title: string;
-  value: string | Array<string>;
+  nativeSelectProps: Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'className'>;
   options: Array<Option>;
-  multiple?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export const SelectWithTitle: React.FC<Props> = (props) => {
-  const { classes = {}, multiple = false, options, title, value, onChange: handleChange } = props;
+  const { classes = {}, title, nativeSelectProps, options } = props;
   return (
     <div className={classnames(styles.root, classes.root)}>
       <p className={styles.title}>{title}</p>
       <Select
-        classes={{ root: classnames(styles.selectRoot, classes.selectRoot), option: styles.selectOption }}
-        multiple={multiple}
-        value={value}
+        classes={{ root: classnames(styles.selectRoot, classes.select?.root), option: styles.selectOption }}
+        nativeSelectProps={nativeSelectProps}
         options={options}
-        onChange={handleChange}
       />
     </div>
   );

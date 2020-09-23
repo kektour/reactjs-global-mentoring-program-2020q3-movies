@@ -7,6 +7,8 @@ export const MOVIES_SET_SORT_BY_FILTER = '@@MOVIES/SET_SORT_BY_FILTER';
 export const MOVIES_REMOVE = '@@MOVIES/REMOVE';
 export const MOVIES_UPDATE = '@@MOVIES/UPDATE';
 export const MOVIES_CREATE = '@@MOVIES/CREATE';
+export const MOVIES_SET_ERROR = '@@MOVIES/SET_ERROR';
+export const MOVIES_CLEAR_ERROR = '@@MOVIES/CLEAR_ERROR';
 
 export interface MoviesFilterState {
   readonly genre: string;
@@ -19,6 +21,7 @@ export interface MoviesState {
   readonly isFetching: boolean;
   readonly isFetched: boolean;
   readonly filter: MoviesFilterState;
+  readonly error: Record<string, string> | null;
 }
 
 export interface MoviesFetchingAction {
@@ -55,6 +58,15 @@ export interface MoviesCreateAction {
   payload: NewMovie;
 }
 
+export interface MoviesSetErrorAction {
+  type: typeof MOVIES_SET_ERROR;
+  error: { [key: string]: string };
+}
+
+export interface MoviesClearErrorAction {
+  type: typeof MOVIES_CLEAR_ERROR;
+}
+
 export type MoviesActionTypes =
   | MoviesFetchingAction
   | MoviesFetchedAction
@@ -62,4 +74,6 @@ export type MoviesActionTypes =
   | MoviesSetSortByFilterAction
   | MoviesRemoveAction
   | MoviesUpdateAction
-  | MoviesCreateAction;
+  | MoviesCreateAction
+  | MoviesSetErrorAction
+  | MoviesClearErrorAction;

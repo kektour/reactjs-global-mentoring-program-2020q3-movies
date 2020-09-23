@@ -31,3 +31,7 @@ export interface GetMoviesQuery {
   offset?: number;
   limit?: number;
 }
+
+export interface PostMovieErrorResponse {
+  messages: Array<string>;
+}

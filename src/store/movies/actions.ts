@@ -1,5 +1,6 @@
-import axios from 'axios';
-import { GetMoviesQuery, GetMoviesResponse, Movie, NewMovie } from '../../models/movie';
+import axios, { AxiosError } from 'axios';
+import { GetMoviesQuery, GetMoviesResponse, Movie, NewMovie, PostMovieErrorResponse } from '../../models/movie';
+import { ErrorSetAction, ERROR_SET } from '../error';
 import { ThunkAction } from '../types';
 import { mapMoviesFilterSelector } from './selectors';
 import {
@@ -16,19 +17,10 @@ import {
   MOVIES_REMOVE,
   MOVIES_SET_GENRE_FILTER,
   MOVIES_SET_SORT_BY_FILTER,
-  MOVIES_UPDATE,
+  MOVIES_UPDATE
 } from './types';
 
 const url = 'http://localhost:4000/movies';
-
-const moviesFetchingActionCreator = (): MoviesFetchingAction => ({
-  type: MOVIES_FETCHING,
-});
-
-const moviesFetchedActionCreator = (apiRes: GetMoviesResponse): MoviesFetchedAction => ({
-  type: MOVIES_FETCHED,
-  payload: apiRes,
-});
 
 export const moviesSetGenreFilterActionCreator = (value: string): MoviesSetGenreFilterAction => ({
   type: MOVIES_SET_GENRE_FILTER,
@@ -40,16 +32,14 @@ export const moviesSetSortByFilterActionCreator = (value: string): MoviesSetSort
   payload: value,
 });
 
-const moviesRemoveActionCreator = (id: number): MoviesRemoveAction => ({
-  type: MOVIES_REMOVE,
-  payload: id,
-});
-
 export const fetchMoviesAction = (params: GetMoviesQuery = {}): ThunkAction => async (dispatch) => {
   try {
-    dispatch(moviesFetchingActionCreator());
+    dispatch({ type: MOVIES_FETCHING } as MoviesFetchingAction);
     const res = await axios.get<GetMoviesResponse>(url, { params });
-    dispatch(moviesFetchedActionCreator(res.data));
+    dispatch({
+      type: MOVIES_FETCHED,
+      payload: res.data,
+    } as MoviesFetchedAction);
   } catch (err) {
     console.error(err);
   }
@@ -58,40 +48,60 @@ export const fetchMoviesAction = (params: GetMoviesQuery = {}): ThunkAction => a
 export const removeMovieAction = (id: number): ThunkAction => async (dispatch, getState) => {
   try {
     await axios.delete(`${url}/${id}`);
-    dispatch(moviesRemoveActionCreator(id));
+    dispatch({ type: MOVIES_REMOVE, payload: id } as MoviesRemoveAction);
     const filter = mapMoviesFilterSelector(getState());
     dispatch(fetchMoviesAction(filter));
   } catch (err) {
     console.error(err);
   }
 };
-
-const moviesUpdateActionCreator = (m: Movie): MoviesUpdateAction => ({
-  type: MOVIES_UPDATE,
-  payload: m,
-});
 
 export const updateMovieAction = (m: Movie): ThunkAction => async (dispatch) => {
   try {
     await axios.put(url, m);
-    dispatch(moviesUpdateActionCreator(m));
+    dispatch({
+      type: MOVIES_UPDATE,
+      payload: m,
+    } as MoviesUpdateAction);
   } catch (err) {
-    console.error(err);
+    const typedErr = err as AxiosError<PostMovieErrorResponse>;
+    const errorMessages = getErrorMessages(typedErr.response!.data.messages);
+    dispatch({
+      type: ERROR_SET,
+      error: errorMessages,
+    } as ErrorSetAction);
+
+    throw new Error(err);
   }
 };
-
-const moviesCreateActionCreator = (m: NewMovie): MoviesCreateAction => ({
-  type: MOVIES_CREATE,
-  payload: m,
-});
 
 export const createMovieAction = (m: NewMovie): ThunkAction => async (dispatch, getState) => {
   try {
     await axios.post(url, m);
-    dispatch(moviesCreateActionCreator(m));
+    dispatch({
+      type: MOVIES_CREATE,
+      payload: m,
+    } as MoviesCreateAction);
     const filter = mapMoviesFilterSelector(getState());
     dispatch(fetchMoviesAction(filter));
   } catch (err) {
-    console.error(err);
+    const typedErr = err as AxiosError<PostMovieErrorResponse>;
+    const errorMessages = getErrorMessages(typedErr.response!.data.messages);
+    dispatch({
+      type: ERROR_SET,
+      error: errorMessages,
+    } as ErrorSetAction);
+
+    throw new Error(err);
   }
 };
+
+const getErrorMessages = (arr: Array<string>): Record<string, string> =>
+  arr.reduce((obj, v) => {
+    let [fieldName] = v.split(' ');
+    fieldName = fieldName.replace(/"/g, '');
+    return {
+      ...obj,
+      [fieldName]: v,
+    };
+  }, {});

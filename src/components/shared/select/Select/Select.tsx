@@ -12,16 +12,15 @@ type Props = {
     root?: string;
     option?: string;
   };
-  value: string | Array<string>;
+  nativeSelectProps: Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'className'>;
   options: Array<Option>;
-  multiple?: boolean;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export const Select: React.FC<Props> = (props) => {
-  const { classes = {}, multiple = false, options, value, onChange: handleChange } = props;
+  const { classes = {}, options, nativeSelectProps } = props;
+
   return (
-    <select className={classnames(styles.root, classes.root)} value={value} multiple={multiple} onChange={handleChange}>
+    <select className={classnames(styles.root, classes.root)} {...nativeSelectProps}>
       <option value="" disabled hidden>
         Choose here
       </option>
