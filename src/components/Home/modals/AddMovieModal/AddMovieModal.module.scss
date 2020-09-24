@@ -33,7 +33,7 @@
   }
 }
 
-.inputs {
+.form {
   margin-right: 55px;
 }
 
@@ -61,4 +61,8 @@
 .buttonSave{
   @extend %button;
   border: 1px solid #f65261;
+}
+
+.selectInput {
+  height: 120px;
 }

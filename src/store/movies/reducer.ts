@@ -2,12 +2,14 @@ import {
   MoviesActionTypes,
   MoviesState,
   MOVIES_CREATE,
+  MOVIES_SET_ERROR,
+  MOVIES_CLEAR_ERROR,
   MOVIES_FETCHED,
   MOVIES_FETCHING,
   MOVIES_REMOVE,
   MOVIES_SET_GENRE_FILTER,
   MOVIES_SET_SORT_BY_FILTER,
-  MOVIES_UPDATE
+  MOVIES_UPDATE,
 } from './types';
 
 const initialState: MoviesState = {
@@ -19,6 +21,7 @@ const initialState: MoviesState = {
     genre: '',
     sortBy: '',
   },
+  error: null,
 };
 
 export const moviesReducer = (state: MoviesState = initialState, action: MoviesActionTypes): MoviesState => {
@@ -53,6 +56,16 @@ export const moviesReducer = (state: MoviesState = initialState, action: MoviesA
       return {
         ...state,
         data: state.data.map((m) => (m.id === action.payload.id ? action.payload : m)),
+      };
+    case MOVIES_SET_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      };
+    case MOVIES_CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
       };
     case MOVIES_REMOVE:
     case MOVIES_CREATE:

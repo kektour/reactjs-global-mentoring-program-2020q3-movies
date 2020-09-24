@@ -37,7 +37,13 @@ export const Sort: React.FC<Props> = () => {
   return (
     <div className={styles.root}>
       <p className={styles.label}>Sort By</p>
-      <Select value={value} options={options} onChange={handleSelectChange} />
+      <Select
+        nativeSelectProps={{
+          value,
+          onChange: handleSelectChange,
+        }}
+        options={options}
+      />
     </div>
   );
 };

@@ -1,9 +1,8 @@
 import { createSelector } from 'reselect';
 import { GetMoviesQuery, Movie } from '../../models/movie';
 import { RootState } from '../types';
-import { MoviesFilterState, MoviesState } from './types';
+import { MoviesFilterState } from './types';
 
-export const moviesSelector = (state: RootState): MoviesState => state.movies;
 export const moviesDataSelector = (state: RootState): Array<Movie> => state.movies.data;
 export const moviesCountSelector = (state: RootState): number => state.movies.count;
 export const moviesFilterSelector = (state: RootState): MoviesFilterState => state.movies.filter;
@@ -23,3 +22,4 @@ export const mapMoviesFilterSelector = createSelector(
     return params;
   }
 );
+// export const moviesErrorSelector = (state: RootState): Record<string, string> | null => state.movies.error;
