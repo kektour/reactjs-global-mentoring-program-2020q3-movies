@@ -8,6 +8,7 @@ type Props = {
   };
 };
 
+// TODO: Add link to /
 export const Logo: React.FC<Props> = (props) => {
   const { classes = {} } = props;
   return (

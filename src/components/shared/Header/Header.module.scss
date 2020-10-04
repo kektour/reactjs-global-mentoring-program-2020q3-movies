@@ -1,4 +1,13 @@
+@import 'src/shared.scss';
+
 .root {
+}
+
+.container {
+  @extend %container;
+}
+
+.header {
   display: flex;
   justify-content: space-between;
 }

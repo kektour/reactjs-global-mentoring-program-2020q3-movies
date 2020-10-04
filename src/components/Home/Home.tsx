@@ -1,26 +1,23 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Footer } from '../shared/Footer';
 import { FilterSort } from './FilterSort';
+import { MovieDetails } from './MovieDetails';
 import { MoviesList } from './MoviesList';
 import { Showcase } from './Showcase';
-import { MovieDetails } from './MovieDetails';
+
 import styles from './Home.module.scss';
-import { Movie } from '../../models/movie';
 
-type Props = {};
-
-export const Home: React.FC<Props> = () => {
-  const [selectedMovie, setSelectedMovie] = useState<Movie>();
-  const handleSelectMovie = useCallback((m: Movie) => setSelectedMovie(m), []);
-  const handleResetMovie = useCallback(() => setSelectedMovie(undefined), []);
-
+export const Home: React.FC<{}> = () => {
+  const { id: movieId } = useParams<{ id: string }>();
   return (
     <div className={styles.root}>
       <div className={styles.content}>
-        {selectedMovie ? <MovieDetails movie={selectedMovie} onCloseClick={handleResetMovie}/> : <Showcase />}
+        {movieId ? <MovieDetails movieId={movieId} /> : <Showcase />}
         <div className={styles.line}></div>
         <FilterSort />
-        <MoviesList onSelectMovie={handleSelectMovie} />
+        <MoviesList />
+        {/* <NotFoundMovie /> */}
       </div>
       <div className={styles.footer}>
         <Footer />

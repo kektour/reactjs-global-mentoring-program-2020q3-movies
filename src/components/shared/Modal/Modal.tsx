@@ -28,10 +28,8 @@ export const Modal: React.FC<Props> = (props) => {
       <React.Fragment>
         {ReactDOM.createPortal(
           <div className={styles.root}>
+            <Header classes={{ root: styles.header }} />
             <div className={styles.container}>
-              <div className={styles.header}>
-                <Header />
-              </div>
               {children}
             </div>
             <Footer classes={{ root: styles.footerRoot }} />

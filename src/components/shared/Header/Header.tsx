@@ -13,8 +13,12 @@ export const Header: React.FC<Props> = (props) => {
   const { classes = {}, children } = props;
   return (
     <div className={classnames(styles.root, classes.root)}>
-      <Logo />
-      {children}
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <Logo />
+          {children}
+        </div>
+      </div>
     </div>
   );
 };

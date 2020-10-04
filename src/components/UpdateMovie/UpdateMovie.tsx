@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import { useFormik } from 'formik';
-import { Movie } from '../../../../models/movie';
-import { Input } from '../../../shared/Input';
-import { Modal } from '../../../shared/Modal';
-import { SelectWithTitle } from '../../../shared/select';
-import { useUpdateMovieModal } from './useUpdateMovieModal';
-import styles from './UpdateMovieModal.module.scss';
+import { Movie } from '../../models/movie';
+import { Input } from '../shared/Input';
+import { Modal } from '../shared/Modal';
+import { SelectWithTitle } from '../shared/select';
+import { useUpdateMovie } from './useUpdateMovie';
+import styles from './UpdateMovie.module.scss';
 
 type Props = {
   open: boolean;
@@ -14,9 +14,9 @@ type Props = {
   onClose: () => void;
 };
 
-export const UpdateMovieModal: React.FC<Props> = (props) => {
+export const UpdateMovie: React.FC<Props> = (props) => {
   const { open, movie, onClose } = props;
-  const { updateMovie, clearError, error } = useUpdateMovieModal();
+  const { updateMovie, clearError, error } = useUpdateMovie();
 
   const handleClose = useCallback(() => {
     onClose();

@@ -12,14 +12,16 @@ export const mapMoviesFilterSelector = createSelector(
     const params: GetMoviesQuery = {};
     params.limit = 9;
     if (filter.genre && filter.genre !== 'all') {
-      params.searchBy = 'genres';
-      params.search = filter.genre;
+      params.filter = filter.genre;
     }
     if (filter.sortBy) {
-      params.sortOrder = 'desc';
+      params.sortOrder = 'asc';
       params.sortBy = filter.sortBy;
+    }
+    if (filter.search) {
+      params.searchBy = 'title';
+      params.search = filter.search;
     }
     return params;
   }
 );
-// export const moviesErrorSelector = (state: RootState): Record<string, string> | null => state.movies.error;

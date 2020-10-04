@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { Modal } from '../../../shared/Modal';
-import styles from './RemoveMovieModal.module.scss';
-import { useRemoveMovieModal } from './useRemoveMovieModal';
+import { Modal } from '../shared/Modal';
+import styles from './RemoveMovie.module.scss';
+import { useRemoveMovie } from './useRemoveMovie';
 
 type Props = {
   open: boolean;
@@ -9,9 +9,9 @@ type Props = {
   id: number
 };
 
-export const RemoveMovieModal: React.FC<Props> = (props) => {
+export const RemoveMovie: React.FC<Props> = (props) => {
   const { open, onClose: handleClose, id} = props;
-  const { removeMovie } = useRemoveMovieModal();
+  const { removeMovie } = useRemoveMovie();
   const handleDeleteClick = useCallback(() => {
     removeMovie(id);
     handleClose();

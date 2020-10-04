@@ -1,0 +1,20 @@
+@import 'src/shared.scss';
+
+.root {
+  flex-grow: 1;
+  display: flex;
+}
+
+.container {
+  @extend %container;
+  margin: auto;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-weight: normal;
+  font-size: 50px;
+  letter-spacing: 2px;
+}

@@ -8,16 +8,20 @@ import {
   MoviesFetchedAction,
   MoviesFetchingAction,
   MoviesRemoveAction,
+  MoviesResetFilterAction,
   MoviesSetGenreFilterAction,
+  MoviesSetSearchFilterAction,
   MoviesSetSortByFilterAction,
   MoviesUpdateAction,
   MOVIES_CREATE,
   MOVIES_FETCHED,
   MOVIES_FETCHING,
   MOVIES_REMOVE,
+  MOVIES_RESET_FILTER,
   MOVIES_SET_GENRE_FILTER,
+  MOVIES_SET_SEARCH_FILTER,
   MOVIES_SET_SORT_BY_FILTER,
-  MOVIES_UPDATE
+  MOVIES_UPDATE,
 } from './types';
 
 const url = 'http://localhost:4000/movies';
@@ -30,6 +34,15 @@ export const moviesSetGenreFilterActionCreator = (value: string): MoviesSetGenre
 export const moviesSetSortByFilterActionCreator = (value: string): MoviesSetSortByFilterAction => ({
   type: MOVIES_SET_SORT_BY_FILTER,
   payload: value,
+});
+
+export const moviesSetSearchFilterActionCreator = (value: string): MoviesSetSearchFilterAction => ({
+  type: MOVIES_SET_SEARCH_FILTER,
+  payload: value,
+});
+
+export const moviesResetFilterActionCreator = (): MoviesResetFilterAction => ({
+  type: MOVIES_RESET_FILTER,
 });
 
 export const fetchMoviesAction = (params: GetMoviesQuery = {}): ThunkAction => async (dispatch) => {

@@ -2,17 +2,21 @@ import { GetMoviesResponse, Movie, NewMovie } from '../../models/movie';
 
 export const MOVIES_FETCHING = '@@MOVIES/FETCHING';
 export const MOVIES_FETCHED = '@@MOVIES/FETCHED';
-export const MOVIES_SET_GENRE_FILTER = '@@MOVIES/SET_GENRE_FILTER';
-export const MOVIES_SET_SORT_BY_FILTER = '@@MOVIES/SET_SORT_BY_FILTER';
 export const MOVIES_REMOVE = '@@MOVIES/REMOVE';
 export const MOVIES_UPDATE = '@@MOVIES/UPDATE';
 export const MOVIES_CREATE = '@@MOVIES/CREATE';
 export const MOVIES_SET_ERROR = '@@MOVIES/SET_ERROR';
 export const MOVIES_CLEAR_ERROR = '@@MOVIES/CLEAR_ERROR';
+/* -------------------- */
+export const MOVIES_SET_GENRE_FILTER = '@@MOVIES/SET_GENRE_FILTER';
+export const MOVIES_SET_SORT_BY_FILTER = '@@MOVIES/SET_SORT_BY_FILTER';
+export const MOVIES_SET_SEARCH_FILTER = '@@MOVIES/SET_SEARCH_FILTER';
+export const MOVIES_RESET_FILTER = '@@MOVIES/RESET_FILTER';
 
 export interface MoviesFilterState {
   readonly genre: string;
   readonly sortBy: string;
+  readonly search: string;
 }
 
 export interface MoviesState {
@@ -43,6 +47,15 @@ export interface MoviesSetSortByFilterAction {
   payload: string;
 }
 
+export interface MoviesSetSearchFilterAction {
+  type: typeof MOVIES_SET_SEARCH_FILTER;
+  payload: string;
+}
+
+export interface MoviesResetFilterAction {
+  type: typeof MOVIES_RESET_FILTER;
+}
+
 export interface MoviesRemoveAction {
   type: typeof MOVIES_REMOVE;
   payload: number;
@@ -60,7 +73,7 @@ export interface MoviesCreateAction {
 
 export interface MoviesSetErrorAction {
   type: typeof MOVIES_SET_ERROR;
-  error: { [key: string]: string };
+  error: Record<string, string>;
 }
 
 export interface MoviesClearErrorAction {
@@ -72,6 +85,8 @@ export type MoviesActionTypes =
   | MoviesFetchedAction
   | MoviesSetGenreFilterAction
   | MoviesSetSortByFilterAction
+  | MoviesSetSearchFilterAction
+  | MoviesResetFilterAction
   | MoviesRemoveAction
   | MoviesUpdateAction
   | MoviesCreateAction
