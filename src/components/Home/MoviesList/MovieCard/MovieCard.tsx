@@ -1,21 +1,23 @@
 import React, { useCallback, useMemo } from 'react';
 import { useModal } from '../../../../hooks/useModal';
 import { Movie } from '../../../../models/movie';
-import { RemoveMovieModal } from '../../modals/RemoveMovieModal';
-import { UpdateMovieModal } from '../../modals/UpdateMovieModal';
+import { RemoveMovie } from '../../../RemoveMovie';
+import { UpdateMovie } from '../../../UpdateMovie';
 import { MovieActionModal } from './MovieActionModal';
+import { useHistory } from 'react-router-dom';
+
 import styles from './MovieCard.module.scss';
 
 type Props = {
   movie: Movie;
-  onSelectMovie: (m: Movie) => void;
 };
 
 export const MovieCard: React.FC<Props> = (props) => {
-  const { movie, onSelectMovie: handleSelectMovie } = props;
+  const { movie } = props;
+  const history = useHistory();
   const deleteMovieModal = useModal();
   const updateMovieModal = useModal();
-  const handleRootDivClick = useCallback(() => handleSelectMovie(movie), [movie, handleSelectMovie]);
+  const handleRootDivClick = useCallback(() => history.push(`/films/${movie.id}`), [movie, history]);
   const genresAsString = useMemo(() => movie.genres.join(', '), [movie]);
 
   return (
@@ -35,8 +37,8 @@ export const MovieCard: React.FC<Props> = (props) => {
         onEditClick={updateMovieModal.open}
         onDeleteClick={deleteMovieModal.open}
       />
-      <RemoveMovieModal open={deleteMovieModal.isOpen} onClose={deleteMovieModal.close} id={movie.id} />
-      <UpdateMovieModal open={updateMovieModal.isOpen} movie={movie} onClose={updateMovieModal.close} />
+      <RemoveMovie open={deleteMovieModal.isOpen} onClose={deleteMovieModal.close} id={movie.id} />
+      <UpdateMovie open={updateMovieModal.isOpen} movie={movie} onClose={updateMovieModal.close} />
     </div>
   );
 };

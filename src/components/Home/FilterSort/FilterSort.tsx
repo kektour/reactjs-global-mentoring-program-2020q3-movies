@@ -3,9 +3,7 @@ import { Filter } from './Filter';
 import { Sort } from './Sort';
 import styles from './FilterSort.module.scss';
 
-type Props = {};
-
-export const FilterSort: React.FC<Props> = () => {
+export const FilterSort: React.FC<{}> = () => {
   return (
     <div className={styles.root}>
       <div className={styles.container}>

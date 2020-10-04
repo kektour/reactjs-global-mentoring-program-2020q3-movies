@@ -1,1 +1,0 @@
-export { UpdateMovieModal } from './UpdateMovieModal';

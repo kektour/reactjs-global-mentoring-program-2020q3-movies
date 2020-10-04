@@ -1,0 +1,1 @@
+export { UpdateMovie } from './UpdateMovie';

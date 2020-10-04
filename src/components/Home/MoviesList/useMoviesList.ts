@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetMoviesQuery, Movie } from '../../../models/movie';
-import { fetchMoviesAction, mapMoviesFilterSelector } from '../../../store/movies';
-import { moviesCountSelector, moviesDataSelector } from '../../../store/movies/selectors';
+import { fetchMoviesAction, mapMoviesFilterSelector, moviesCountSelector, moviesDataSelector } from '../../../store/movies';
 import { RootState } from '../../../store/types';
 
 type UseMoviesList = {
@@ -18,8 +17,7 @@ export const useMoviesList = (): UseMoviesList => {
 
   useEffect(() => {
     dispatch(fetchMoviesAction(filter));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter]);
+  }, [dispatch, filter]);
 
   return {
     movies,

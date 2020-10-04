@@ -3,8 +3,6 @@ import { Option, Select } from '../../../shared/select/Select';
 import styles from './Sort.module.scss';
 import { useSort } from './useSort';
 
-type Props = {};
-
 const options: Array<Option> = [
   {
     label: 'Title',
@@ -24,7 +22,7 @@ const options: Array<Option> = [
   },
 ];
 
-export const Sort: React.FC<Props> = () => {
+export const Sort: React.FC<{}> = () => {
   const [value, setValue] = useState(options[0].value);
   const sort = useSort();
   const handleSelectChange = useCallback(

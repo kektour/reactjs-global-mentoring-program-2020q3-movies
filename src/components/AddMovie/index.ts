@@ -1,0 +1,1 @@
+export { AddMovie } from './AddMovie';

@@ -1,18 +1,13 @@
 import React from 'react';
-import { Movie } from '../../../models/movie';
 import { MovieCard } from './MovieCard';
 import { useMoviesList } from './useMoviesList';
+import { NotFoundMovie } from '../NotFoundMovie';
 import styles from './MoviesList.module.scss';
 
-type Props = {
-  onSelectMovie: (m: Movie) => void;
-};
-
-export const MoviesList: React.FC<Props> = (props) => {
-  const { onSelectMovie: handleSelectMovie } = props;
+export const MoviesList: React.FC<{}> = () => {
   const moviesList = useMoviesList();
 
-  return (
+  return moviesList.count ? (
     <div className={styles.root}>
       <div className={styles.container}>
         <p className={styles.moviesCount}>
@@ -20,10 +15,12 @@ export const MoviesList: React.FC<Props> = (props) => {
         </p>
         <div className={styles.moviesContainer}>
           {moviesList.movies.map((m) => (
-            <MovieCard key={m.id} movie={m} onSelectMovie={handleSelectMovie} />
+            <MovieCard key={m.id} movie={m} />
           ))}
         </div>
       </div>
     </div>
+  ) : (
+    <NotFoundMovie />
   );
 };

@@ -22,6 +22,8 @@ export interface GetMoviesResponse {
   limit: number;
 }
 
+export interface GetMovieResponse extends Movie {}
+
 export interface GetMoviesQuery {
   sortBy?: string;
   sortOrder?: 'desc' | 'asc';
