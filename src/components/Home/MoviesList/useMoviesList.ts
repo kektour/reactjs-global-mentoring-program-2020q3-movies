@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { GetMoviesQuery, Movie } from '../../../models/movie';
-import { fetchMoviesAction, mapMoviesFilterSelector, moviesCountSelector, moviesDataSelector } from '../../../store/movies';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Movie } from '../../../models/movie';
+import { mapMoviesFilterSelector } from '../../../store/movies';
 import { RootState } from '../../../store/types';
+import { fetchMovies, FetchMoviesParams } from '../../../services/movies';
 
 type UseMoviesList = {
   movies: Array<Movie>;
@@ -10,14 +11,16 @@ type UseMoviesList = {
 };
 
 export const useMoviesList = (): UseMoviesList => {
-  const dispatch = useDispatch();
-  const movies = useSelector<RootState, Array<Movie>>(moviesDataSelector);
-  const count = useSelector<RootState, number>(moviesCountSelector);
-  const filter = useSelector<RootState, GetMoviesQuery>(mapMoviesFilterSelector);
+  const [movies, setMovies] = useState<Array<Movie>>([]);
+  const [count, setCount] = useState<number>(0);
+  const filter = useSelector<RootState, FetchMoviesParams>(mapMoviesFilterSelector);
 
   useEffect(() => {
-    dispatch(fetchMoviesAction(filter));
-  }, [dispatch, filter]);
+    fetchMovies(filter).then((v) => {
+      setMovies(v.data);
+      setCount(v.totalAmount);
+    });
+  }, [filter]);
 
   return {
     movies,

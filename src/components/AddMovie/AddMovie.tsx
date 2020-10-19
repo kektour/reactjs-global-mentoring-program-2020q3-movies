@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import { useFormik } from 'formik';
-import { NewMovie } from '../../models/movie';
+import { Movie } from '../../models/movie';
 import { Input } from '../shared/Input';
 import { Modal } from '../shared/Modal';
 import { SelectWithTitle } from '../shared/select';
@@ -13,7 +13,7 @@ type Props = {
   onClose: () => void;
 };
 
-const defaultMovie: NewMovie = {
+const defaultMovie: Omit<Movie, 'id'> = {
   title: '',
   tagline: 'tagline', // not used
   vote_average: 0, // not used

@@ -1,14 +1,11 @@
-import { useDispatch } from 'react-redux';
-import { removeMovieAction } from '../../store/movies';
-import { ThunkAction } from '../../store/types';
+import { removeMovie as rM } from '../../services/movies';
 
 type UseRemoveMovie = {
-  removeMovie: (id: number) => ThunkAction;
+  removeMovie: (id: number) => void;
 };
 
 export const useRemoveMovie = (): UseRemoveMovie => {
-  const dispatch = useDispatch();
-  const removeMovie = (id: number) => dispatch(removeMovieAction(id));
+  const removeMovie = (id: number) => rM(id);
   return {
     removeMovie,
   };
