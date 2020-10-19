@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Should render component correctly 1`] = `
+<DocumentFragment>
+  <form
+    class="root"
+  >
+    <input
+      class="field"
+      name="search"
+      placeholder="What do you want to watch?"
+      type="text"
+      value="baz"
+    />
+    <button
+      class="button"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Search Should user interact with the form 1`] = `
+<DocumentFragment>
+  <form
+    class="root"
+  >
+    <input
+      class="field"
+      name="search"
+      placeholder="What do you want to watch?"
+      type="text"
+      value="Search Foo"
+    />
+    <button
+      class="button"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</DocumentFragment>
+`;

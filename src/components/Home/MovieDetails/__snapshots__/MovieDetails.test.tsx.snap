@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="header"
+      >
+        <div
+          class="root"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="header"
+            >
+              <p
+                class="root"
+              >
+                <span>
+                  netflix
+                </span>
+                roulette
+              </p>
+              <button
+                class="goBackButton"
+              >
+                <i
+                  class="fa fa-search"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="body"
+      >
+        <img
+          alt="Not Found"
+          class="image"
+          src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+        />
+        <div
+          class="info"
+        >
+          <div
+            class="titleNRating"
+          >
+            <h1
+              class="title"
+            >
+              Fifty Shades Freed
+            </h1>
+            <div
+              class="rating"
+              style="color: green;"
+            >
+              6.1
+            </div>
+          </div>
+          <div
+            class="note"
+          >
+            Don't miss the climax
+          </div>
+          <div
+            class="releaseDateNRuntime"
+          >
+            <div
+              class="releaseDate"
+            >
+              2018
+            </div>
+            106 min
+          </div>
+          <div
+            class="overview"
+          >
+            Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

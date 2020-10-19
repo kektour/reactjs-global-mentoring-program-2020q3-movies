@@ -17,11 +17,13 @@ export const useUpdateMovie = (): UseUpdateMovie => {
   const [error, setError] = useState<Record<string, string> | null>(null);
   const updateMovie = async (m: Movie) => {
     try {
-      uM(m);
+      await uM(m);
     } catch (err) {
       const typedErr = err as AxiosError<PostMovieErrorResponse>;
       const errorMessages = getErrorMessages(typedErr.response!.data.messages);
       setError(errorMessages);
+      throw new Error('Update movie error');
+
     }
   };
   const clearError = () => setError(null);

@@ -18,7 +18,7 @@ const defaultMovie: Omit<Movie, 'id'> = {
   tagline: 'tagline', // not used
   vote_average: 0, // not used
   vote_count: 0, // not used
-  release_date: new Date().toISOString().split('T')[0],
+  release_date: '2020-10-24',
   poster_path:
     'https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg',
   overview: '',

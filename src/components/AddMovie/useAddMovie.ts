@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Movie } from '../../models/movie';
 import { createMovie as cM } from '../../services/movies';
 
 type UseAddMovie = {
-  createMovie: (m: Omit<Movie, 'id'>) => Promise<void>;
   error: Record<string, string> | null;
   clearError: () => void;
+  createMovie: (m: Omit<Movie, 'id'>) => Promise<void>;
 };
 
 interface PostMovieErrorResponse {
@@ -15,21 +15,22 @@ interface PostMovieErrorResponse {
 
 export const useAddMovie = (): UseAddMovie => {
   const [error, setError] = useState<Record<string, string> | null>(null);
-  const createMovie = async (m: Omit<Movie, 'id'>) => {
+  const createMovie = useCallback(async (m: Omit<Movie, 'id'>) => {
     try {
-      cM(m);
+      await cM(m);
     } catch (err) {
       const typedErr = err as AxiosError<PostMovieErrorResponse>;
       const errorMessages = getErrorMessages(typedErr.response!.data.messages);
       setError(errorMessages);
+      throw new Error('Create movie error');
     }
-  };
-  const clearError = () => setError(null);
+  }, []);
+  const clearError = useCallback(() => setError(null), []);
 
   return {
-    createMovie,
     error,
     clearError,
+    createMovie,
   };
 };
 

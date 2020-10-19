@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectWithTitle Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <p
+      class="title"
+    >
+      Hello
+    </p>
+    <select
+      class="root selectRoot"
+    >
+      <option
+        disabled=""
+        hidden=""
+        value=""
+      >
+        Choose here
+      </option>
+      <option
+        class="option selectOption"
+        selected=""
+        value="foo"
+      >
+        Foo
+      </option>
+      <option
+        class="option selectOption"
+        value="bar"
+      >
+        Bar
+      </option>
+      <option
+        class="option selectOption"
+        value="baz"
+      >
+        Baz
+      </option>
+    </select>
+  </div>
+</DocumentFragment>
+`;

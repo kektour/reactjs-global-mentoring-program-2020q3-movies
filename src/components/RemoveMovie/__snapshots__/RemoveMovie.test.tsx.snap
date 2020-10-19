@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveMovie Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="root header"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="header"
+        >
+          <p
+            class="root"
+          >
+            <span>
+              netflix
+            </span>
+            roulette
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="content"
+      >
+        <button
+          class="crossButton"
+        />
+        <h2
+          class="contentHeader"
+        >
+          Delete Movie
+        </h2>
+        <p
+          class="contentBody"
+        >
+          Are you sure you want to delete this movie?
+        </p>
+        <button
+          class="buttonConfirm"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+    <div
+      class="root footerRoot"
+    >
+      <p
+        class="root logoRoot"
+      >
+        <span>
+          netflix
+        </span>
+        roulette
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

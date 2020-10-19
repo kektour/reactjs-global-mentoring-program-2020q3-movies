@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterSort Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="controls"
+      >
+        <div
+          class="root"
+        >
+          <div
+            class="root"
+          >
+            <button
+              class="button buttonActive"
+            >
+              All
+            </button>
+            <div
+              class="line"
+            />
+          </div>
+          <div
+            class="root"
+          >
+            <button
+              class="button"
+            >
+              Documentary
+            </button>
+          </div>
+          <div
+            class="root"
+          >
+            <button
+              class="button"
+            >
+              Comedy
+            </button>
+          </div>
+          <div
+            class="root"
+          >
+            <button
+              class="button"
+            >
+              Horror
+            </button>
+          </div>
+          <div
+            class="root"
+          >
+            <button
+              class="button"
+            >
+              Crime
+            </button>
+          </div>
+        </div>
+        <div
+          class="root"
+        >
+          <p
+            class="label"
+          >
+            Sort By
+          </p>
+          <select
+            class="root"
+          >
+            <option
+              disabled=""
+              hidden=""
+              value=""
+            >
+              Choose here
+            </option>
+            <option
+              class="option"
+              value="title"
+            >
+              Title
+            </option>
+            <option
+              class="option"
+              value="vote_average"
+            >
+              Vote Average
+            </option>
+            <option
+              class="option"
+              value="release_date"
+            >
+              Release Date
+            </option>
+            <option
+              class="option"
+              value="runtime"
+            >
+              Runtime
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="line"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary Should render component correctly 1`] = `
+<DocumentFragment>
+  <div>
+    Foo
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ErrorBoundary Should render error message 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <h1
+      class="errText"
+    >
+      Error. Something went wrong
+    </h1>
+    ;
+  </div>
+</DocumentFragment>
+`;

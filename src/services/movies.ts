@@ -18,19 +18,21 @@ interface FetchMoviesResponse {
   limit: number;
 }
 
+export const url = 'http://localhost:4000/movies';
+
 export const fetchMovies = async (params: FetchMoviesParams = {}): Promise<FetchMoviesResponse> => {
-  const res = await axios.get<FetchMoviesResponse>('http://localhost:4000/movies', { params });
+  const res = await axios.get<FetchMoviesResponse>(url, { params });
   return res.data;
 };
 
 export const removeMovie = async (id: number) => {
-  await axios.delete(`http://localhost:4000/movies/${id}`);
+  await axios.delete(`${url}/${id}`);
 };
 
 export const updateMovie = async (m: Movie) => {
-  await axios.put('http://localhost:4000/movies', m);
+  await axios.put(url, m);
 };
 
 export const createMovie = async (m: Omit<Movie, 'id'>) => {
-  await axios.post('http://localhost:4000/movies', m);
+  await axios.post(url, m);
 };

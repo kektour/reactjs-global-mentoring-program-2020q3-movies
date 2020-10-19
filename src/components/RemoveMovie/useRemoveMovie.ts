@@ -1,7 +1,7 @@
 import { removeMovie as rM } from '../../services/movies';
 
 type UseRemoveMovie = {
-  removeMovie: (id: number) => void;
+  removeMovie: (id: number) => Promise<void>;
 };
 
 export const useRemoveMovie = (): UseRemoveMovie => {
