@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieActionModal Should render component correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="root"
+    >
+      <div
+        class="dot"
+      />
+      <div
+        class="dot"
+      />
+      <div
+        class="dot"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

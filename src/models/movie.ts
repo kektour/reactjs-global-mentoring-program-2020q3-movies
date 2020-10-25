@@ -12,28 +12,3 @@ export interface Movie {
   genres: Array<string>;
   runtime: number;
 }
-
-export interface NewMovie extends Omit<Movie, 'id'> {}
-
-export interface GetMoviesResponse {
-  totalAmount: number;
-  data: Array<Movie>;
-  offset: number;
-  limit: number;
-}
-
-export interface GetMovieResponse extends Movie {}
-
-export interface GetMoviesQuery {
-  sortBy?: string;
-  sortOrder?: 'desc' | 'asc';
-  search?: string;
-  searchBy?: 'title' | 'genres';
-  filter?: string | Array<string>;
-  offset?: number;
-  limit?: number;
-}
-
-export interface PostMovieErrorResponse {
-  messages: Array<string>;
-}

@@ -1,0 +1,640 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateMovie Should interact with the form 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="root header"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="header"
+        >
+          <p
+            class="root"
+          >
+            <span>
+              netflix
+            </span>
+            roulette
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="content"
+      >
+        <button
+          class="crossButton"
+        />
+        <h2
+          class="contentHeader"
+        >
+          Edit Movie
+        </h2>
+        <form
+          class="form"
+        >
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Movie Id
+            </p>
+            <input
+              class="input"
+              name="id"
+              readonly=""
+              value="337167"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Title
+            </p>
+            <input
+              class="input"
+              name="title"
+              placeholder="Title here"
+              value="Title Foo"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Release Date
+            </p>
+            <input
+              class="input"
+              name="release_date"
+              placeholder="Release Date here"
+              type="date"
+              value="2019-09-04"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Movie Preview
+            </p>
+            <input
+              class="input"
+              name="poster_path"
+              placeholder="Movie Preview here"
+              value="Movie Preview Foo"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Gende
+            </p>
+            <select
+              class="root selectRoot selectInput"
+              multiple=""
+              name="genres"
+            >
+              <option
+                disabled=""
+                hidden=""
+                value=""
+              >
+                Choose here
+              </option>
+              <option
+                class="option selectOption"
+                value="foo"
+              >
+                Foo
+              </option>
+              <option
+                class="option selectOption"
+                value="bar"
+              >
+                Bar
+              </option>
+              <option
+                class="option selectOption"
+                value="baz"
+              >
+                Baz
+              </option>
+            </select>
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Overview
+            </p>
+            <input
+              class="input"
+              name="overview"
+              placeholder="Overview here"
+              value="Overview Foo"
+            />
+          </div>
+          <div
+            class="root inputRoot lastInputRoot"
+          >
+            <p
+              class="title"
+            >
+              Runtime
+            </p>
+            <input
+              class="input"
+              name="runtime"
+              placeholder="Runtime here"
+              value="123"
+            />
+          </div>
+          <div
+            class="buttonsContainer"
+          >
+            <button
+              class="buttonReset"
+              type="reset"
+            >
+              Reset
+            </button>
+            <button
+              class="buttonSave"
+              type="submit"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      class="root footerRoot"
+    >
+      <p
+        class="root logoRoot"
+      >
+        <span>
+          netflix
+        </span>
+        roulette
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`UpdateMovie Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="root header"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="header"
+        >
+          <p
+            class="root"
+          >
+            <span>
+              netflix
+            </span>
+            roulette
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="content"
+      >
+        <button
+          class="crossButton"
+        />
+        <h2
+          class="contentHeader"
+        >
+          Edit Movie
+        </h2>
+        <form
+          class="form"
+        >
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Movie Id
+            </p>
+            <input
+              class="input"
+              name="id"
+              readonly=""
+              value="337167"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Title
+            </p>
+            <input
+              class="input"
+              name="title"
+              placeholder="Title here"
+              value="Fifty Shades Freed"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Release Date
+            </p>
+            <input
+              class="input"
+              name="release_date"
+              placeholder="Release Date here"
+              type="date"
+              value="2018-02-07"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Movie Preview
+            </p>
+            <input
+              class="input"
+              name="poster_path"
+              placeholder="Movie Preview here"
+              value="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Gende
+            </p>
+            <select
+              class="root selectRoot selectInput"
+              multiple=""
+              name="genres"
+            >
+              <option
+                disabled=""
+                hidden=""
+                value=""
+              >
+                Choose here
+              </option>
+              <option
+                class="option selectOption"
+                value="foo"
+              >
+                Foo
+              </option>
+              <option
+                class="option selectOption"
+                value="bar"
+              >
+                Bar
+              </option>
+              <option
+                class="option selectOption"
+                value="baz"
+              >
+                Baz
+              </option>
+            </select>
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Overview
+            </p>
+            <input
+              class="input"
+              name="overview"
+              placeholder="Overview here"
+              value="Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins."
+            />
+          </div>
+          <div
+            class="root inputRoot lastInputRoot"
+          >
+            <p
+              class="title"
+            >
+              Runtime
+            </p>
+            <input
+              class="input"
+              name="runtime"
+              placeholder="Runtime here"
+              value="106"
+            />
+          </div>
+          <div
+            class="buttonsContainer"
+          >
+            <button
+              class="buttonReset"
+              type="reset"
+            >
+              Reset
+            </button>
+            <button
+              class="buttonSave"
+              type="submit"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      class="root footerRoot"
+    >
+      <p
+        class="root logoRoot"
+      >
+        <span>
+          netflix
+        </span>
+        roulette
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`UpdateMovie Should show errors 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="root header"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="header"
+        >
+          <p
+            class="root"
+          >
+            <span>
+              netflix
+            </span>
+            roulette
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="content"
+      >
+        <button
+          class="crossButton"
+        />
+        <h2
+          class="contentHeader"
+        >
+          Edit Movie
+        </h2>
+        <form
+          class="form"
+        >
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Movie Id
+            </p>
+            <input
+              class="input"
+              name="id"
+              readonly=""
+              value="337167"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Title
+            </p>
+            <input
+              class="input"
+              name="title"
+              placeholder="Title here"
+              value="Fifty Shades Freed"
+            />
+          </div>
+          <p
+            style="color: red;"
+          >
+            "title" error title field
+          </p>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Release Date
+            </p>
+            <input
+              class="input"
+              name="release_date"
+              placeholder="Release Date here"
+              type="date"
+              value="2018-02-07"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Movie Preview
+            </p>
+            <input
+              class="input"
+              name="poster_path"
+              placeholder="Movie Preview here"
+              value="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+            />
+          </div>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Gende
+            </p>
+            <select
+              class="root selectRoot selectInput"
+              multiple=""
+              name="genres"
+            >
+              <option
+                disabled=""
+                hidden=""
+                value=""
+              >
+                Choose here
+              </option>
+              <option
+                class="option selectOption"
+                value="foo"
+              >
+                Foo
+              </option>
+              <option
+                class="option selectOption"
+                value="bar"
+              >
+                Bar
+              </option>
+              <option
+                class="option selectOption"
+                value="baz"
+              >
+                Baz
+              </option>
+            </select>
+          </div>
+          <p
+            style="color: red;"
+          >
+            "genres" error genres field
+          </p>
+          <div
+            class="root inputRoot"
+          >
+            <p
+              class="title"
+            >
+              Overview
+            </p>
+            <input
+              class="input"
+              name="overview"
+              placeholder="Overview here"
+              value="Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins."
+            />
+          </div>
+          <p
+            style="color: red;"
+          >
+            "overview" error overview field
+          </p>
+          <div
+            class="root inputRoot lastInputRoot"
+          >
+            <p
+              class="title"
+            >
+              Runtime
+            </p>
+            <input
+              class="input"
+              name="runtime"
+              placeholder="Runtime here"
+              value="106"
+            />
+          </div>
+          <div
+            class="buttonsContainer"
+          >
+            <button
+              class="buttonReset"
+              type="reset"
+            >
+              Reset
+            </button>
+            <button
+              class="buttonSave"
+              type="submit"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div
+      class="root footerRoot"
+    >
+      <p
+        class="root logoRoot"
+      >
+        <span>
+          netflix
+        </span>
+        roulette
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="root header"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="header"
+        >
+          <p
+            class="root"
+          >
+            <span>
+              netflix
+            </span>
+            roulette
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <h1
+        class="title"
+      >
+        Page not found
+      </h1>
+      <img
+        alt="Not found"
+        class="notFoundImg"
+        src="notFound.jpg"
+      />
+      <a
+        class="goBackButton"
+        href="/"
+      >
+        Go back to home
+      </a>
+    </div>
+    <div
+      class="root footer"
+    >
+      <p
+        class="root logoRoot"
+      >
+        <span>
+          netflix
+        </span>
+        roulette
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

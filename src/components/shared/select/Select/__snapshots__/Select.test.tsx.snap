@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Should render component correctly 1`] = `
+<DocumentFragment>
+  <select
+    class="root"
+  >
+    <option
+      disabled=""
+      hidden=""
+      value=""
+    >
+      Choose here
+    </option>
+    <option
+      class="option"
+      selected=""
+      value="foo"
+    >
+      Foo
+    </option>
+    <option
+      class="option"
+      value="bar"
+    >
+      Bar
+    </option>
+    <option
+      class="option"
+      value="baz"
+    >
+      Baz
+    </option>
+  </select>
+</DocumentFragment>
+`;

@@ -1,21 +1,18 @@
 import { createSelector } from 'reselect';
-import { GetMoviesQuery, Movie } from '../../models/movie';
+import { FetchMoviesParams } from '../../services/movies';
 import { RootState } from '../types';
-import { MoviesFilterState } from './types';
 
-export const moviesDataSelector = (state: RootState): Array<Movie> => state.movies.data;
-export const moviesCountSelector = (state: RootState): number => state.movies.count;
-export const moviesFilterSelector = (state: RootState): MoviesFilterState => state.movies.filter;
+export const moviesFilterSelector = (state: RootState) => state.movies.filter;
 export const mapMoviesFilterSelector = createSelector(
   moviesFilterSelector,
-  (filter: MoviesFilterState): GetMoviesQuery => {
-    const params: GetMoviesQuery = {};
+  (filter): FetchMoviesParams => {
+    const params: FetchMoviesParams = {};
     params.limit = 9;
     if (filter.genre && filter.genre !== 'all') {
       params.filter = filter.genre;
     }
     if (filter.sortBy) {
-      params.sortOrder = 'asc';
+      params.sortOrder = 'desc';
       params.sortBy = filter.sortBy;
     }
     if (filter.search) {

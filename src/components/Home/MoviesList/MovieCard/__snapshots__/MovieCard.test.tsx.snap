@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="movieContent"
+    >
+      <img
+        alt="Not Found"
+        class="img"
+        src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+      />
+      <div
+        class="contentContainer"
+      >
+        <div
+          class="title"
+        >
+          Fifty Shades Freed
+        </div>
+        <div
+          class="year"
+        >
+          2018-02-07
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Drama, Romance
+      </div>
+    </div>
+    <div>
+      <div
+        class="root movieActionModalRoundButtonRoot"
+      >
+        <div
+          class="dot"
+        />
+        <div
+          class="dot"
+        />
+        <div
+          class="dot"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

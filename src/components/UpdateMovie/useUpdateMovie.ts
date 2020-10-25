@@ -1,20 +1,32 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { AxiosError } from 'axios';
+import { useState } from 'react';
 import { Movie } from '../../models/movie';
-import { ErrorClearAction, errorClearActionCreator, errorSelector, ErrorState } from '../../store/error';
-import { updateMovieAction } from '../../store/movies';
-import { ThunkAction } from '../../store/types';
+import { updateMovie as uM } from '../../services/movies';
 
 type UseUpdateMovie = {
-  updateMovie: (m: Movie) => Promise<ThunkAction>;
-  error: ErrorState;
-  clearError: () => ErrorClearAction;
+  updateMovie: (m: Movie) => Promise<void>;
+  error: Record<string, string> | null;
+  clearError: () => void;
 };
 
+interface PostMovieErrorResponse {
+  messages: Array<string>;
+}
+
 export const useUpdateMovie = (): UseUpdateMovie => {
-  const dispatch = useDispatch();
-  const error = useSelector(errorSelector);
-  const updateMovie = async (m: Movie) => await dispatch(updateMovieAction(m));
-  const clearError = () => dispatch(errorClearActionCreator());
+  const [error, setError] = useState<Record<string, string> | null>(null);
+  const updateMovie = async (m: Movie) => {
+    try {
+      await uM(m);
+    } catch (err) {
+      const typedErr = err as AxiosError<PostMovieErrorResponse>;
+      const errorMessages = getErrorMessages(typedErr.response!.data.messages);
+      setError(errorMessages);
+      throw new Error('Update movie error');
+
+    }
+  };
+  const clearError = () => setError(null);
 
   return {
     updateMovie,
@@ -22,3 +34,13 @@ export const useUpdateMovie = (): UseUpdateMovie => {
     clearError,
   };
 };
+
+const getErrorMessages = (arr: Array<string>): Record<string, string> =>
+  arr.reduce((obj, v) => {
+    let [fieldName] = v.split(' ');
+    fieldName = fieldName.replace(/"/g, '');
+    return {
+      ...obj,
+      [fieldName]: v,
+    };
+  }, {});

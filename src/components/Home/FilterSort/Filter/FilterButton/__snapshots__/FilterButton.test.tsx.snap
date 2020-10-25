@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterButton Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <button
+      class="button"
+    >
+      Foo
+    </button>
+  </div>
+</DocumentFragment>
+`;

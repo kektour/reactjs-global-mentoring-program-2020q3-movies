@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <p
+      class="title"
+    >
+      Foo
+    </p>
+    <input
+      class="input"
+      value="Bar"
+    />
+  </div>
+</DocumentFragment>
+`;

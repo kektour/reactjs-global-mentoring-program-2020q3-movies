@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Showcase Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="root header"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="header"
+        >
+          <p
+            class="root"
+          >
+            <span>
+              netflix
+            </span>
+            roulette
+          </p>
+          <button
+            class="button"
+          >
+            + Add Movie
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div
+        class="content"
+      >
+        <h1
+          class="contentTitle"
+        >
+          Find Your Movie
+        </h1>
+        <form
+          class="root"
+        >
+          <input
+            class="field"
+            name="search"
+            placeholder="What do you want to watch?"
+            type="text"
+            value="baz"
+          />
+          <button
+            class="button"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

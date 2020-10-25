@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Should render component correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="root"
+  >
+    <div
+      class="root header"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="header"
+        >
+          <p
+            class="root"
+          >
+            <span>
+              netflix
+            </span>
+            roulette
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="container"
+    >
+      <div>
+        Foo
+      </div>
+    </div>
+    <div
+      class="root footerRoot"
+    >
+      <p
+        class="root logoRoot"
+      >
+        <span>
+          netflix
+        </span>
+        roulette
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

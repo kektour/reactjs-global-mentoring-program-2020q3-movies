@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getColorByRating } from '../../../helpers/common';
-import { GetMovieResponse, Movie } from '../../../models/movie';
+import { Movie } from '../../../models/movie';
 import { Header } from '../../shared/Header';
 import styles from './MovieDetails.module.scss';
 import { useMovieDetailts } from './useMovieDetailts';
@@ -18,7 +18,7 @@ export const MovieDetails: React.FC<Props> = ({ movieId }) => {
 
   useEffect(() => {
     axios
-      .get<GetMovieResponse>(`http://localhost:4000/movies/${movieId}`)
+      .get<Movie>(`http://localhost:4000/movies/${movieId}`)
       .then((res) => setMovie(res.data))
       .catch(() => history.push('/'));
   }, [movieId, history]);
