@@ -1,0 +1,57 @@
+@import 'src/styles/shared.scss';
+
+.root {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url('/showcaseBackground.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 120px 100px 250px #000000, inset -120px -100px 250px #000000;
+  }
+}
+
+%fix {
+  z-index: 2;
+  position: relative;
+}
+
+.container {
+  @extend %container;
+  @extend %fix;
+}
+
+.header {
+  padding-top: 20px;
+  margin-bottom: 50px;
+  @extend %fix;
+}
+
+.content {
+  padding: 0 60px;
+}
+
+.contentTitle {
+  text-transform: uppercase;
+  color: white;
+  margin: 0 0 50px 0;
+  padding: 0;
+}
+
+.button {
+  @extend %button;
+  height: 50px;
+  color: #f65261;
+  background: rgba(85, 85, 85, 0.6);
+}

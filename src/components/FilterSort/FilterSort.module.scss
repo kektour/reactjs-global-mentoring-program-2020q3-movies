@@ -1,0 +1,21 @@
+@import 'src/styles/shared.scss';
+
+.root {
+  padding-top: 20px;
+  padding-bottom: 28px;
+}
+
+.container {
+  @extend %container;
+}
+
+.controls {
+  display: flex;
+  margin-bottom: 22px;
+  justify-content: space-between;
+}
+
+.line {
+  @extend %line;
+  height: 2px;
+}

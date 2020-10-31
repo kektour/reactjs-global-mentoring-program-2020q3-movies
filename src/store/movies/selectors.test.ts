@@ -6,7 +6,6 @@ describe('Movies Selectors', () => {
       filter: {
         genre: 'foo',
         sortBy: 'bar',
-        search: 'baz',
       },
     },
   };
@@ -15,7 +14,6 @@ describe('Movies Selectors', () => {
     expect(moviesFilterSelector(rootState)).toEqual({
       genre: 'foo',
       sortBy: 'bar',
-      search: 'baz',
     });
   });
 
@@ -25,8 +23,6 @@ describe('Movies Selectors', () => {
       filter: 'foo',
       sortOrder: 'desc',
       sortBy: 'bar',
-      searchBy: 'title',
-      search: 'baz',
     });
   });
 });

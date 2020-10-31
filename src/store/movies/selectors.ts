@@ -15,10 +15,6 @@ export const mapMoviesFilterSelector = createSelector(
       params.sortOrder = 'desc';
       params.sortBy = filter.sortBy;
     }
-    if (filter.search) {
-      params.searchBy = 'title';
-      params.search = filter.search;
-    }
     return params;
   }
 );

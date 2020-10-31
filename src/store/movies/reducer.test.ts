@@ -1,5 +1,5 @@
 import { moviesReducer } from './reducer';
-import { MOVIES_RESET_FILTER, MOVIES_SET_GENRE_FILTER, MOVIES_SET_SEARCH_FILTER, MOVIES_SET_SORT_BY_FILTER } from './types';
+import { MOVIES_RESET_FILTER, MOVIES_SET_GENRE_FILTER, MOVIES_SET_SORT_BY_FILTER } from './types';
 
 describe('Movies Reducer', () => {
   it('Should return the initial state without initial search state', () => {
@@ -7,7 +7,6 @@ describe('Movies Reducer', () => {
       filter: {
         genre: '',
         sortBy: 'title',
-        search: '',
       },
     });
   });
@@ -22,7 +21,6 @@ describe('Movies Reducer', () => {
       filter: {
         genre: 'Foo',
         sortBy: 'title',
-        search: '',
       },
     });
   });
@@ -37,22 +35,6 @@ describe('Movies Reducer', () => {
       filter: {
         genre: '',
         sortBy: 'Foo',
-        search: '',
-      },
-    });
-  });
-
-  it('Should handle MOVIES_SET_SEARCH_FILTER', () => {
-    expect(
-      moviesReducer(undefined, {
-        type: MOVIES_SET_SEARCH_FILTER,
-        payload: 'Foo',
-      })
-    ).toEqual({
-      filter: {
-        genre: '',
-        sortBy: 'title',
-        search: 'Foo',
       },
     });
   });
@@ -64,7 +46,6 @@ describe('Movies Reducer', () => {
           filter: {
             genre: 'foo',
             sortBy: 'bar',
-            search: 'baz',
           },
         },
         {
@@ -75,7 +56,6 @@ describe('Movies Reducer', () => {
       filter: {
         genre: '',
         sortBy: 'title',
-        search: '',
       },
     });
   });
