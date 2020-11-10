@@ -1,13 +1,19 @@
-import React from 'react';
-import { Footer } from '../../shared/Footer';
-import { FilterSort } from '../../FilterSort';
-import { MovieDetails } from './MovieDetails';
-import { MoviesList } from '../../MoviesList';
 import { useRouter } from 'next/router';
+import React from 'react';
+import { Movie } from '../../../models/movie';
+import { FilterSort } from '../../FilterSort';
+import { MoviesList } from '../../MoviesList';
+import { Footer } from '../../shared/Footer';
+import { MovieDetails } from './MovieDetails';
 
 import styles from './Film.module.scss';
 
-export const Film: React.FC<{}> = () => {
+type Props = {
+  movies: Array<Movie>;
+  count: number;
+};
+
+export const Film: React.FC<Props> = ({ movies, count }) => {
   const router = useRouter();
   const movieId = router.query['id'] as string | undefined;
 
@@ -17,7 +23,7 @@ export const Film: React.FC<{}> = () => {
         {movieId && <MovieDetails movieId={movieId} />}
         <div className={styles.line}></div>
         <FilterSort />
-        <MoviesList />
+        <MoviesList movies={movies} count={count} />
       </div>
       <div className={styles.footer}>
         <Footer />
